@@ -2,7 +2,7 @@
 #BASH INFO: http://wiki.bash-hackers.org/syntax/
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/Rahul/my_gcc:${PATH}"
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
 
 export CLICOLOR=1
@@ -77,9 +77,6 @@ function getShortPWD
 }
 
 
-
-PATH=$PATH:$HOME/my_gcc/bin
-export PATH
 
 function caen
 {
