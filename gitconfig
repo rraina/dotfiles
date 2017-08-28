@@ -1,0 +1,29 @@
+[user]
+	name = Rahul Raina
+	email = rahulr0609@hotmail.com
+	token = d8d0535fd1572bc1075347c6a09eb9a3
+[color]
+	ui = true
+
+[alias]
+  ai = add -i
+  ##############
+  c = commit
+  ca = commit -a
+  cm = commit -m
+  cd = commit --amend
+  ##############
+  l = log --oneline 
+  lg = log --oneline --abbrev-commit --graph --decorate
+  ##############
+  m = merge
+  ##############
+  o = checkout
+  ob = checkout -b
+  ##############
+  s = status
+  ##############
+  sa = stash apply
+  sl = stash list 
+  sp = stash pop
+  ss = stash save
