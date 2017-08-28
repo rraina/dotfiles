@@ -22,11 +22,6 @@ alias ls="ls -G"
 shopt -s extglob
 export HISTCONTROL=ignoredups
 
-#================== VIRTENV CONFIG ==========================
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Documents/PetProjects/mealjet
-source /usr/local/bin/virtualenvwrapper.sh
-
 # Add sublime link to my local bin
 ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 
@@ -176,5 +171,4 @@ function spoof-mac-addr
 
 #*************************** alias profiles***************************
 alias mftp="sftp rraina@login.engin.umich.edu"
-
 
