@@ -3,9 +3,18 @@
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+# Adding GOLANG to path
+PATH="$PATH:/usr/local/opt/go/libexec/bin"
+PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 export PATH
 
 export CLICOLOR=1
+
+# Opendoor Config
+# Load rbenv automatically
+eval "$(rbenv init -)"
+
+
 
 #Come in pairs (forgroundBackground)
 # http://www.norbauer.com/rails-consulting/notes/ls-colors-and-terminal-app.html
@@ -21,9 +30,6 @@ alias ls="ls -G"
 #alias g++="g++-4.7"
 shopt -s extglob
 export HISTCONTROL=ignoredups
-
-# Add sublime link to my local bin
-ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/sublime
 
 #------------------------ GitHub Controls-----------------------------
 Black='\[\e[0;30m\]'
@@ -71,62 +77,24 @@ function getShortPWD
   echo $( echo ${PWD} | rev | cut -d / -f -$1 | rev )
 }
 
-
-
-function caen
-{
-
-  local machNum='3'
-
-  if [ "$#" -eq "1" ]
-  then
-    local re='^0[1-9]|[1-9]{2}$'
-     
-      if ! [[ $1 =~ $re ]]
-        then
-          echo "Error: Please enter valid machine in format [0-9][1-9]"
-          return 1
-      else 
-        machNum=$1
-      fi
-  else
-    echo "Logging into default machine"
-    eval "ssh -Y rraina@login.engin.umich.edu"
-    return 0
-  fi
-
-  echo "Logging into CAEN machine: $machNum"
-
-  local host="caen-vnc${machNum}.engin.umich.edu"
-  local user="rraina"
-
-  local addr="${user}@${host}"
-  
-  eval "ssh -Y $addr"
-
-  if [ "$?" -ne 0 ]
-  then
-    echo "Error: Invalid login - $addr"
-    return 1 
-  else
-    return 0
-  fi
-  
-}
-
-function go
+function g
 {
 
   if [ "$#" -gt "0" ]; then
-    if [ "$1" == "pp" ]; then
-      cd ~/Documents/PetProjects
+    if [ "$1" == "od" ]; then
+      cd ~/Documents/opendoor
     elif [ "$1" == "dt" ]; then
       cd ~/Desktop
-    elif [ "$1" == "sf" ]; then
-      cd ~/Documents/rahuls\ school\ files/
-    elif [ "$1" == "mj" ]; then
-      cd /Users/Rahul/Documents/PetProjects/mealjet
-
+    elif [ "$1" == "web" ]; then
+        if [ "$2" == "load" ]; then
+            brew services run postgresql
+            brew services run redis
+            brew services run elasticsearch@2.4
+        elif [ "$2" == "start" ]; then
+            ~/Documents/opendoor/web/bin/server --tabs
+        else
+            echo 'Invalid command provided'
+        fi
     else
       echo 'Invalid command provided'  
     fi
@@ -169,6 +137,7 @@ function spoof-mac-addr
 
 }
 
-#*************************** alias profiles***************************
-alias mftp="sftp rraina@login.engin.umich.edu"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
