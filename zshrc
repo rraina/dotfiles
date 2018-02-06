@@ -1,5 +1,15 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Opendoor Configuration
+#Load rbenv automatically
+eval "$(rbenv init -)"
+
+# Add GOLANG to path
+PATH="$PATH:/usr/local/opt/go/libexec/bin"
+PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
+export PATH
+ 
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rahulraina/.oh-my-zsh
