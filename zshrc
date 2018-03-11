@@ -101,5 +101,43 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="code ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+function g
+{
+  invalid_cmd_msg='Invalid command'
+
+  if [ $# -gt 0 ]; then
+    if [ $1 = 'od' ]; then
+      cd ~/Documents/opendoor
+    elif [ $1 = 'dt' ]; then
+      cd ~/Desktop
+    elif [ $1 = 'web' ]; then
+      if [ $2 = 'load' ]; then
+        brew services run postgresql
+        brew services run redis
+        brew services run elasticsearch@2.4
+      elif [ $2 = 'start' ]; then
+        ~/Documents/opendoor/web/bin/server --tabs
+      elif [ $2 = 'prod' ]; then
+        app_name='opendoor-web'
+        if [ $3 = 'admin' ]; then
+          app_name='opendoor-web-admin'
+        fi
+        echo "Logging into PROD for $app_name"
+        heroku run DISABLE_DATADOG_AGENT=1 OD_CURRENT_USER_EMAIL=rahul.raina@opendoor.com rails c --app $app_name
+      else
+        echo $invalid_cmd_msg
+      fi
+    else
+      echo $invalid_cmd_msg
+    fi
+  else
+    echo 'No command provided'
+  fi
+
+  return 0
+}
+ 
+
