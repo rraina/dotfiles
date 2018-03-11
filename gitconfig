@@ -20,6 +20,9 @@
   ##############
   o = checkout
   ob = checkout -b
+  com = checkout master
+  ##############
+  pp = pull --prune
   ##############
   s = status
   ##############
