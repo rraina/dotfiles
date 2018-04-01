@@ -10,11 +10,10 @@ export PATH
 
 export CLICOLOR=1
 
-# Opendoor Config
-# Load rbenv automatically
-eval "$(rbenv init -)"
-
-
+if [[ $- == *i* ]]; then
+  export SHELL=zsh
+  exec zsh -l
+fi
 
 #Come in pairs (forgroundBackground)
 # http://www.norbauer.com/rails-consulting/notes/ls-colors-and-terminal-app.html
