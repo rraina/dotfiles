@@ -1,6 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# NVM Configuration
+export NVM_DIR="$HOME/.nvm" 
+. "/usr/local/opt/nvm/nvm.sh"
+
 # Opendoor Configuration
 #Load rbenv automatically
 eval "$(rbenv init -)"
@@ -9,7 +13,6 @@ eval "$(rbenv init -)"
 PATH="$PATH:/usr/local/opt/go/libexec/bin"
 PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 export PATH
- 
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rahulraina/.oh-my-zsh
@@ -101,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="code ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 function g
@@ -114,7 +117,9 @@ function g
     elif [ $1 = 'dt' ]; then
       cd ~/Desktop
     elif [ $1 = 'web' ]; then
-      if [ $2 = 'load' ]; then
+      if [ $2 = 'ngrok' ]; then
+        ngrok http -subdomain=opendoor 5000
+      elif [ $2 = 'load' ]; then
         brew services run postgresql
         brew services run redis
         brew services run elasticsearch@2.4
