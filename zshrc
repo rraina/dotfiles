@@ -5,15 +5,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export NVM_DIR="$HOME/.nvm" 
 . "/usr/local/opt/nvm/nvm.sh"
 
-# Opendoor Configuration
-#Load rbenv automatically
-eval "$(rbenv init -)"
-
-# Add GOLANG to path
-PATH="$PATH:/usr/local/opt/go/libexec/bin"
-PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
-export PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rahulraina/.oh-my-zsh
 
@@ -112,29 +103,10 @@ function g
   invalid_cmd_msg='Invalid command'
 
   if [ $# -gt 0 ]; then
-    if [ $1 = 'od' ]; then
-      cd ~/Documents/opendoor
+    if [ $1 = 'td' ]; then
+      cd ~/Documents/tokendrop
     elif [ $1 = 'dt' ]; then
       cd ~/Desktop
-    elif [ $1 = 'web' ]; then
-      if [ $2 = 'ngrok' ]; then
-        ngrok http -subdomain=opendoor 5000
-      elif [ $2 = 'load' ]; then
-        brew services run postgresql
-        brew services run redis
-        brew services run elasticsearch@2.4
-      elif [ $2 = 'start' ]; then
-        ~/Documents/opendoor/web/bin/server --tabs
-      elif [ $2 = 'prod' ]; then
-        app_name='opendoor-web'
-        if [ $3 = 'admin' ]; then
-          app_name='opendoor-web-admin'
-        fi
-        echo "Logging into PROD for $app_name"
-        heroku run DISABLE_DATADOG_AGENT=1 OD_CURRENT_USER_EMAIL=rahul.raina@opendoor.com rails c --app $app_name
-      else
-        echo $invalid_cmd_msg
-      fi
     else
       echo $invalid_cmd_msg
     fi
