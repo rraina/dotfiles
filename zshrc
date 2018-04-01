@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-function g
+function go
 {
   invalid_cmd_msg='Invalid command'
 
