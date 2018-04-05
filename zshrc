@@ -5,6 +5,11 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export NVM_DIR="$HOME/.nvm" 
 . "/usr/local/opt/nvm/nvm.sh"
 
+# Keypress hold overrides for Mac
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults write com.apple.Terminal ApplePressAndHoldEnabled -bool false
+
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rahulraina/.oh-my-zsh
 
