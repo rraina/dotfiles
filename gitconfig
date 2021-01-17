@@ -16,6 +16,8 @@
   l = log --oneline 
   lg = log --oneline --abbrev-commit --graph --decorate
   ##############
+  ri = rebase -i
+  ##############
   m = merge
   ##############
   o = checkout
@@ -30,3 +32,7 @@
   sl = stash list 
   sp = stash pop
   ss = stash save
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
